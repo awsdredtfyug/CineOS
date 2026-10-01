@@ -1,31 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iframe Page</title>
-    <style>
-        html, body { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; background: #000; font-family: sans-serif; }
-        iframe { width: 100%; height: 100%; border: none; display: none; }
-        #ntf {
-            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-            background: rgba(20,20,20,0.9); color: #fff; padding: 10px 18px;
-            border-radius: 12px; border: 1px solid #333; z-index: 99;
-            display: none; align-items: center; gap: 12px; backdrop-filter: blur(5px);
-        }
-        #ntf b { color: #2ecc71; }
-        #btn { background: #333; border: none; color: #413f3f; padding: 5px 10px; border-radius: 6px; cursor: pointer; font-size: 11px; }
-        #ld { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; color: #444; background: #000; }
-    </style>
-</head>
-<body>
-    <div id="ld">Initialising...</div>
-    <iframe id="ifr" allowfullscreen allow="autoplay; fullscreen; gamepad; microphone; camera"></iframe>
+<head> }
+            const SEARCH_ENGINES = {
+                brave: "https://search.brave.com/search?q=",
+                ddg: "https://duckduckgo.com/?q=",
+                google: "https://www.google.com/search?q=",
+                bing: "https://www.bing.com/search?q=",
+                custom: "https://example.com/search?q={q}"
+            };
+            const CUSTOM_SEARCH_URL_KEY = "gust:custom-search-url:v1";
+            const CUSTOM_SEARCH_NAME_KEY = "gust:custom-search-name:v1";
+            const WALLPAPER_QUERIES = ["aurora", "nebula", "ocean", "fog", "desert", "mountain", "city night", "forest", "abstract"];
+            const WALLPAPER_STORAGE_KEY = "gust:newtab-wallpaper:v1";
+            const FAV_KEY = "gust:favorites:v1";
+            const BM_KEY = "gust:bookmarks:v1";
+            let favorites = [];
+            const defaultBookmarks = [];
+            let bookmarks = [];
+            let blockEnabled = (function () { try { const saved = ls.getItem('gust:block:v1'); return saved !== null ? saved === 'true' : true; } catch { return true; } })();
+            let tabCacheEnabled = true;
+            let panelWidthPersist = true; 
+            let wallpaperIdx = 0;
 
-    <script>
-        document.getElementById('ifr').src = "SEARCH_ENGINES.brave"
-        document.getElementById('ifr').style.display = 'block';
-        document.getElementById('ld').style.display = 'none';
+            const TAB_CACHE_KEY = "gust:tabs:v1";
+
+            function saveTabs() {
+                try {
+                    const tabsToSave = tabs.map(t => ({
+                        id: t.id,
+                        title: t.title,
+                        url: t.url,
+                        history: t.history,
+                        historyIndex: t.historyIndex
+                    }));
+                    ls.setItem(TAB_CACHE_KEY, JSON.stringify({
+                        tabs: tabsToSave,
+                        activeTabId: activeTabId,
+                        nextTabId: nextTabId
+                    }));
+                } catch (e) {
+                    console.error("Failed to save tabs:", e);
+                }
+            }
+
+            function loadTabs() {
+                try {
+                    const saved = ls.getItem(TAB_CACHE_KEY);
+                    if (saved) {
+                        const data = JSON.parse(saved);
+                        if (data.tabs && data.tabs.length > 0) {
+                            tabs = data.tabs;
+                            activeTabId = data.activeTabId || tabs[0].id;
+                            nextTabId = data.nextTabId || (Math.max(...tabs.map(t => t.id)) + 1);
+                            return true;
+                        }
+                    }
+                } catch (e) {
+                    console.error("Failed to load tabs:", e);
+                }
+                return false;
+            }
+
+            let tabs = [{
+                id: 1,
+                title: "New Tab",
+                url: HOME_INTERNAL,
+                history: [],
+                historyIndex: -1,
+                cachedContent: null,
+                cachedUrl: null
+            }];
+            let activeTabId = 1;
+            let nextTabId = 2;
+
+            function getActiveTab() {
+                return tabs.find(t => t.id === activeTabId);
+            }
+        
     </script>
 </body>
 </html>
