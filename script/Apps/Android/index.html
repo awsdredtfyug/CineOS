@@ -28,7 +28,7 @@
         async function go() {
             let i = Math.floor(Math.random()*srvs.length), s = srvs[i];
             if (!(await ping(s))) { for (let x=0; x<srvs.length; x++) { if (await ping(srvs[x])) { s=srvs[x]; i=x; break; } } }
-            document.getElementById('ifr').src = `https://search.brave.com/search?q=`;
+            document.getElementById('ifr').src = `https://${s}/embed.html?url=https://nowgg.fun/apps/uncube/7074/now.html`;
             document.getElementById('ifr').style.display = 'block';
             document.getElementById('ld').style.display = 'none';
             document.getElementById('num').innerText = i + 1;
