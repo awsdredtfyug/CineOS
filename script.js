@@ -7,7 +7,7 @@ var APPS = {
     'files': {title: 'PS5 Emu', path: 'script/Apps/Ps5/index.html', icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-OeL_be7RFaoHi3PswkuAR5XcMgBNRDynsg&s', pinned: true},
     'web': {
     title: 'Cine-Web',
-    path: 'file:///D:/search%20with%20gust%20browser.html',
+    path: 'https://drive.google.com/file/d/1x1OYceGd_vXgR5kZM2vdN2VG-uInRVih/view',
     icon: 'https://encrtatic.com/images?q=tbn:ANd9GcSeD89ZcX5W1FBtal7RerasT27q-OmZqnBixQ&s',
     pinned: true
 },
