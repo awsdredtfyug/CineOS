@@ -243,7 +243,7 @@ document.addEventListener('keydown', function(e) {
         setTimeout(function(){ enterCount = 0; }, 500);
     }
     if(e.key && sysConfig.panicKey && e.key.toLowerCase() === sysConfig.panicKey.toLowerCase()) {
-        window.location.href = "https://google.com";
+        window.location.href = "";
     }
 });
 
