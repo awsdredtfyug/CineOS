@@ -5,97 +5,11 @@ var APPS = {
     'cine': {title: 'CINE // HUB', path: 'script/Apps/Cine/index.html', icon: 'https://cdn.worldvectorlogo.com/logos/netflix-logo-icon.svg', pinned: true},
     'term': {title: 'Spotify', path: 'script/Apps/Spotify/index.html', icon: 'https://cdn.pixabay.com/photo/2016/10/22/00/15/spotify-1759471_1280.jpg', pinned: true},
     'files': {title: 'PS5 Emu', path: 'script/Apps/Ps5/index.html', icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-OeL_be7RFaoHi3PswkuAR5XcMgBNRDynsg&s', pinned: true},
-    'web':```html
-<!DOCTYPE html>
-<html lang="en-us">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iframe Page</title>
-
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
-            overflow: hidden;
-            background: #000;
-            font-family: sans-serif;
-        }
-
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            display: none;
-        }
-
-        #ntf {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(20,20,20,0.9);
-            color: #fff;
-            padding: 10px 18px;
-            border-radius: 12px;
-            border: 1px solid #333;
-            z-index: 99;
-            display: none;
-            align-items: center;
-            gap: 12px;
-            backdrop-filter: blur(5px);
-        }
-
-        #ntf b {
-            color: #2ecc71;
-        }
-
-        #btn {
-            background: #333;
-            border: none;
-            color: #fff;
-            padding: 5px 10px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 11px;
-        }
-
-        #ld {
-            position: fixed;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #444;
-            background: #000;
-        }
-    </style>
-</head>
-
-<body>
-
-    <div id="ld">Initialising...</div>
-
-    <iframe
-        id="ifr"
-        allowfullscreen
-        allow="autoplay; fullscreen; gamepad; microphone; camera">
-    </iframe>
-
-    <script>
-        document.getElementById('ifr').src =
-            "https://185.16.38.230/?__cpo=aHR0cHM6Ly9raWNrcy1zaG9wLmNvbQ==";
-
-        document.getElementById('ifr').style.display = 'block';
-        document.getElementById('ld').style.display = 'none';
-    </script>
-
-</body>
-</html>
-```
-
+    'web': {
+    title: 'Cine-Web',
+    path: 'https://185.16.38.230/?__cpo=aHR0cHM6Ly9raWNrcy1zaG9wLmNvbQ',
+    icon: 'https://encrtatic.com/images?q=tbn:ANd9GcSeD89ZcX5W1FBtal7RerasT27q-OmZqnBixQ&s',
+    pinned: false
 },
     'settings': {title: 'CONFIG', internal: true, icon: 'https://cdn.iconscout.com/icon/free/png-256/free-apple-settings-icon-svg-download-png-493162.png', pinned: true},
     'discord': {title: 'Discord', path: 'script/Apps/Discord/index.html', icon: 'https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png', pinned: false},
